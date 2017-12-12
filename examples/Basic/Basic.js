@@ -1,37 +1,43 @@
-import React, { Component } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import SideMenu from "./side-menu";
-import Menu from "./Menu";
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import SideMenu from 'react-native-side-menu';
+import Menu from './Menu';
 
-const image = require("./assets/menu.png");
+const image = require('./assets/menu.png');
 
 const styles = StyleSheet.create({
   button: {
-    position: "absolute",
+    position: 'absolute',
     top: 20,
-    padding: 10
+    padding: 10,
   },
   caption: {
     fontSize: 20,
-    fontWeight: "bold",
-    alignItems: "center"
+    fontWeight: 'bold',
+    alignItems: 'center',
   },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
-    textAlign: "center",
-    margin: 10
+    textAlign: 'center',
+    margin: 10,
   },
   instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
 
 export default class Basic extends Component {
@@ -42,13 +48,13 @@ export default class Basic extends Component {
 
     this.state = {
       isOpen: false,
-      selectedItem: "About"
+      selectedItem: 'About',
     };
   }
 
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 
@@ -59,7 +65,7 @@ export default class Basic extends Component {
   onMenuItemSelected = item =>
     this.setState({
       isOpen: false,
-      selectedItem: item
+      selectedItem: item,
     });
 
   render() {
@@ -72,20 +78,28 @@ export default class Basic extends Component {
         onChange={isOpen => this.updateMenuState(isOpen)}
       >
         <View style={styles.container}>
-          <Text style={styles.welcome}>Welcome to React Native!</Text>
+          <Text style={styles.welcome}>
+            Welcome to React Native!
+          </Text>
           <Text style={styles.instructions}>
             To get started, edit index.ios.js
           </Text>
           <Text style={styles.instructions}>
-            Press Cmd+R to reload,{"\n"}
+            Press Cmd+R to reload,{'\n'}
             Cmd+Control+Z for dev menu
           </Text>
           <Text style={styles.instructions}>
             Current selected menu item is: {this.state.selectedItem}
           </Text>
         </View>
-        <TouchableOpacity onPress={this.toggle} style={styles.button}>
-          <Image source={image} style={{ width: 32, height: 32 }} />
+        <TouchableOpacity
+          onPress={this.toggle}
+          style={styles.button}
+        >
+          <Image
+            source={image}
+            style={{ width: 32, height: 32 }}
+          />
         </TouchableOpacity>
       </SideMenu>
     );
